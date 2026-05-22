@@ -2,7 +2,9 @@ package com.chetan.snoutscout.app
 
 import android.content.Context
 import com.chetan.snoutscout.data.local.DatabaseProvider
+import com.chetan.snoutscout.data.repository.CallRepository
 import com.chetan.snoutscout.data.repository.DogRepository
+import com.chetan.snoutscout.data.repository.MockCallRepository
 import com.chetan.snoutscout.data.repository.NotificationRepository
 import com.chetan.snoutscout.data.repository.ReportRepository
 import com.chetan.snoutscout.data.repository.RoomDogRepository
@@ -31,6 +33,7 @@ class AppContainer(
     val reportRepository: ReportRepository = RoomReportRepository(database.reportDao())
     val trainerDashboardRepository: TrainerDashboardRepository =
         RoomTrainerDashboardRepository(database.trainerDao())
+    val callRepository: CallRepository = MockCallRepository()
 
     val seedLoader = SeedLoader(database)
 }

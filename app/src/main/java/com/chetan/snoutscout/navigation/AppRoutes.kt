@@ -10,6 +10,9 @@ sealed class AppRoute(val route: String) {
     data object Notifications : AppRoute("notifications")
     data object History : AppRoute("history")
     data object Reports : AppRoute("reports")
+    data object InstantCall : AppRoute("instant_call")
+    data object ActiveCall : AppRoute("active_call")
+    data object PostCallSummary : AppRoute("post_call_summary")
     data object Settings : AppRoute("settings")
     data object TrainerDashboard : AppRoute("trainer_dashboard")
 }

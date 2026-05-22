@@ -2,6 +2,7 @@ package com.chetan.snoutscout.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBalanceWallet
+import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.History
@@ -21,6 +22,7 @@ val clientBottomNavItems = listOf(
     BottomNavItem("Trainers", AppRoute.Browse.route, Icons.Outlined.Search),
     BottomNavItem("Dogs", AppRoute.Dogs.route, Icons.Outlined.Pets),
     BottomNavItem("Wallet", AppRoute.Wallet.route, Icons.Outlined.AccountBalanceWallet),
+    BottomNavItem("Calls", AppRoute.InstantCall.route, Icons.Outlined.Call),
     BottomNavItem("History", AppRoute.History.route, Icons.Outlined.History),
     BottomNavItem("Reports", AppRoute.Reports.route, Icons.Outlined.Description),
     BottomNavItem("Alerts", AppRoute.Notifications.route, Icons.Outlined.Notifications)

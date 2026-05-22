@@ -14,6 +14,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.chetan.snoutscout.app.AppRole
 import com.chetan.snoutscout.core.ui.components.AppTopBar
+import com.chetan.snoutscout.feature.call.CallScreen
+import com.chetan.snoutscout.feature.call.InstantCallPrecheckScreen
+import com.chetan.snoutscout.feature.call.PostCallSummaryScreen
 import com.chetan.snoutscout.feature.client_home.ClientHomeScreen
 import com.chetan.snoutscout.feature.dog_profile.DogProfilesScreen
 import com.chetan.snoutscout.feature.history.SessionHistoryScreen
@@ -39,7 +42,8 @@ fun AppNavGraph() {
         AppRoute.Wallet.route,
         AppRoute.Notifications.route,
         AppRoute.History.route,
-        AppRoute.Reports.route
+        AppRoute.Reports.route,
+        AppRoute.InstantCall.route
     ) && currentRole == AppRole.CLIENT
 
     val topBarTitle = when {
@@ -50,6 +54,9 @@ fun AppNavGraph() {
         currentRoute == AppRoute.Notifications.route -> "Notifications"
         currentRoute == AppRoute.History.route -> "Session History"
         currentRoute == AppRoute.Reports.route -> "Reports"
+        currentRoute == AppRoute.InstantCall.route -> "Instant Call"
+        currentRoute == AppRoute.ActiveCall.route -> "Live Call"
+        currentRoute == AppRoute.PostCallSummary.route -> "Call Summary"
         currentRoute == AppRoute.Settings.route -> "Settings"
         currentRoute == AppRoute.ClientHome.route -> "Snout Scout"
         else -> "Snout Scout"
@@ -121,6 +128,31 @@ fun AppNavGraph() {
             composable(AppRoute.Notifications.route) { NotificationsScreen() }
             composable(AppRoute.History.route) { SessionHistoryScreen() }
             composable(AppRoute.Reports.route) { ReportsListScreen() }
+            composable(AppRoute.InstantCall.route) {
+                InstantCallPrecheckScreen(
+                    onVoiceCall = { navController.navigate(AppRoute.ActiveCall.route) },
+                    onVideoCall = { navController.navigate(AppRoute.ActiveCall.route) },
+                    onEmergencyCall = { navController.navigate(AppRoute.ActiveCall.route) }
+                )
+            }
+            composable(AppRoute.ActiveCall.route) {
+                CallScreen(
+                    onCallEnded = {
+                        navController.navigate(AppRoute.PostCallSummary.route) {
+                            popUpTo(AppRoute.ActiveCall.route) { inclusive = true }
+                        }
+                    }
+                )
+            }
+            composable(AppRoute.PostCallSummary.route) {
+                PostCallSummaryScreen(
+                    onDone = {
+                        navController.navigate(AppRoute.History.route) {
+                            popUpTo(AppRoute.PostCallSummary.route) { inclusive = true }
+                        }
+                    }
+                )
+            }
             composable(AppRoute.Settings.route) { SettingsScreen() }
             composable(AppRoute.TrainerDashboard.route) { TrainerDashboardScreen() }
         }
