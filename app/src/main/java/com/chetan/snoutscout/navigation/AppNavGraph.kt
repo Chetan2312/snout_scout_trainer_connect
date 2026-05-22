@@ -16,8 +16,10 @@ import com.chetan.snoutscout.app.AppRole
 import com.chetan.snoutscout.core.ui.components.AppTopBar
 import com.chetan.snoutscout.feature.client_home.ClientHomeScreen
 import com.chetan.snoutscout.feature.dog_profile.DogProfilesScreen
+import com.chetan.snoutscout.feature.history.SessionHistoryScreen
 import com.chetan.snoutscout.feature.notifications.NotificationsScreen
 import com.chetan.snoutscout.feature.onboarding.OnboardingScreen
+import com.chetan.snoutscout.feature.reports.ReportsListScreen
 import com.chetan.snoutscout.feature.settings.SettingsScreen
 import com.chetan.snoutscout.feature.trainer_browse.BrowseTrainersScreen
 import com.chetan.snoutscout.feature.trainer_dashboard.TrainerDashboardScreen
@@ -35,7 +37,9 @@ fun AppNavGraph() {
         AppRoute.Browse.route,
         AppRoute.Dogs.route,
         AppRoute.Wallet.route,
-        AppRoute.Notifications.route
+        AppRoute.Notifications.route,
+        AppRoute.History.route,
+        AppRoute.Reports.route
     ) && currentRole == AppRole.CLIENT
 
     val topBarTitle = when {
@@ -44,6 +48,8 @@ fun AppNavGraph() {
         currentRoute == AppRoute.Dogs.route -> "Your Dogs"
         currentRoute == AppRoute.Wallet.route -> "Wallet"
         currentRoute == AppRoute.Notifications.route -> "Notifications"
+        currentRoute == AppRoute.History.route -> "Session History"
+        currentRoute == AppRoute.Reports.route -> "Reports"
         currentRoute == AppRoute.Settings.route -> "Settings"
         currentRoute == AppRoute.ClientHome.route -> "Snout Scout"
         else -> "Snout Scout"
@@ -113,6 +119,8 @@ fun AppNavGraph() {
             composable(AppRoute.Dogs.route) { DogProfilesScreen() }
             composable(AppRoute.Wallet.route) { WalletScreen() }
             composable(AppRoute.Notifications.route) { NotificationsScreen() }
+            composable(AppRoute.History.route) { SessionHistoryScreen() }
+            composable(AppRoute.Reports.route) { ReportsListScreen() }
             composable(AppRoute.Settings.route) { SettingsScreen() }
             composable(AppRoute.TrainerDashboard.route) { TrainerDashboardScreen() }
         }

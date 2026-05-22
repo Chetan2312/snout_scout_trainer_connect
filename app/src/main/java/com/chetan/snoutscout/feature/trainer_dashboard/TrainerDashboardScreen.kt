@@ -9,11 +9,22 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.chetan.snoutscout.SnoutScoutApp
 import com.chetan.snoutscout.core.ui.components.PrimaryButton
 
 @Composable
 fun TrainerDashboardScreen() {
+    val application = LocalContext.current.applicationContext as SnoutScoutApp
+    val viewModel: TrainerDashboardViewModel = viewModel(
+        factory = TrainerDashboardViewModel.factory(application.appContainer.trainerDashboardRepository)
+    )
+    val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
+    val trainer = uiState.trainer
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -31,12 +42,16 @@ fun TrainerDashboardScreen() {
                 verticalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 Text(
-                    text = "Verification status",
+                    text = trainer?.fullName ?: "Loading profile",
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = "KYC under review • Featured plan active",
+                    text = trainer?.bio ?: "Preparing trainer profile data",
                     style = MaterialTheme.typography.bodyMedium
+                )
+                Text(
+                    text = "Status: ${trainer?.verificationStatus?.name ?: "PENDING"}",
+                    style = MaterialTheme.typography.bodySmall
                 )
             }
         }
@@ -51,7 +66,7 @@ fun TrainerDashboardScreen() {
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = "3 upcoming consultations • ₹2,450 projected earnings",
+                    text = "Upcoming calls, availability, earnings, and report drafts will live here.",
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
