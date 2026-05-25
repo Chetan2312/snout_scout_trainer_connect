@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Snout Scout</string>
+    <string name="tagline">Trusted dog trainers, one call away</string>
+    <string name="btn_get_started">Get Started</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Create Account</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_recharge">+ Recharge</string>
+    <string name="btn_end_call">End Call</string>
+    <string name="btn_add_dog">Add Dog</string>
+    <string name="lbl_wallet_balance">Wallet Balance</string>
+    <string name="lbl_session_history">Session History</string>
+    <string name="lbl_my_dogs">My Dogs</string>
+    <string name="lbl_browse">Browse Trainers</string>
+    <string name="lbl_home">Home</string>
+    <string name="lbl_profile">Profile</string>
+    <string name="lbl_notifications">Notifications</string>
+    <string name="empty_no_dogs">No dogs added yet</string>
+    <string name="empty_no_sessions">No sessions yet</string>
+    <string name="empty_no_reports">No reports yet</string>
+    <string name="empty_no_trainers">No trainers found</string>
+    <string name="secure_payments">Secure payments via Razorpay</string>
+    <string name="payment_methods">UPI · Cards · Net Banking · Wallets</string>
+    <string name="ai_report_note">AI-generated report will be ready within 30 minutes</string>
+    <string name="consent_text">I consent to call recording and AI-generated session notes for training improvement purposes.</string>
+    <string name="verified_trainer">Verified Trainer</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+    <string name="connecting">Connecting...</string>
+    <string name="session_complete">Session Complete</string>
+    <string name="consultation_ended">Your consultation has ended</string>
+    <string name="low_balance_warning">Low Balance</string>
+    <string name="switch_to_trainer">Switch to Trainer Mode</string>
+    <string name="switch_to_client">Switch to Client Mode</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="report_a_problem">Report a Problem</string>
+    <string name="help_support">Help &amp; Support</string>
+    <string name="privacy_policy">Privacy &amp; Data Policy</string>
+    <string name="consent_settings">Consent Settings</string>
+    <string name="call_recording_ai">Call recording &amp; AI notes</string>
+</resources>

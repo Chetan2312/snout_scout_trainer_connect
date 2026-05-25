@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gradle --version)",
+      "Bash(find /usr -name \"gradle-wrapper.jar\" 2>/dev/null | head -3; find /home -name \"gradle-wrapper.jar\" 2>/dev/null | head -3; find /opt -name \"gradle-wrapper.jar\" 2>/dev/null | head -3)",
+      "Read(//usr/**)",
+      "Read(//home/**)",
+      "Read(//opt/**)"
+    ]
+  }
+}
