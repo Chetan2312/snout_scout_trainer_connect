@@ -59,9 +59,9 @@ fun PostCallScreen(
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                     StatItem(DateFormatter.formatElapsed(elapsedSeconds), "Duration")
-                    Divider(modifier = Modifier.height(40.dp).width(1.dp))
+                    VerticalDivider(modifier = Modifier.height(40.dp))
                     StatItem("₹$cost", "Total Cost")
-                    Divider(modifier = Modifier.height(40.dp).width(1.dp))
+                    VerticalDivider(modifier = Modifier.height(40.dp))
                     StatItem("Voice", "Type")
                 }
             }

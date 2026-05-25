@@ -3,6 +3,7 @@ package com.snoutscout.app.feature.call
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -20,6 +21,7 @@ import com.snoutscout.app.core.ui.*
 import com.snoutscout.app.data.model.MockData
 import java.util.*
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ScheduleBookingScreen(trainerId: String, onBack: () -> Unit) {
     val trainer = remember { MockData.TRAINERS.find { it.id == trainerId } }
@@ -120,9 +122,7 @@ fun ScheduleBookingScreen(trainerId: String, onBack: () -> Unit) {
             SSButton(
                 text = "Confirm Booking",
                 onClick = {
-                    kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Main).launch {
-                        snackbarHostState.showSnackbar("Booking confirmed!")
-                    }
+                    scope.launch { snackbarHostState.showSnackbar("Booking confirmed!") }
                     onBack()
                 },
                 modifier = Modifier.fillMaxWidth(),

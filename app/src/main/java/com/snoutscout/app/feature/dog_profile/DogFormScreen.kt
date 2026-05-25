@@ -1,6 +1,7 @@
 package com.snoutscout.app.feature.dog_profile
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -18,6 +19,7 @@ import com.snoutscout.app.data.model.DogProfile
 import com.snoutscout.app.data.model.MockData
 import java.util.UUID
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun DogFormScreen(dogId: String?, onBack: () -> Unit) {
     val context = LocalContext.current

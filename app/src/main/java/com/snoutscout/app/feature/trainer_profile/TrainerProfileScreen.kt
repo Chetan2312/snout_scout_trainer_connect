@@ -2,6 +2,7 @@ package com.snoutscout.app.feature.trainer_profile
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,6 +23,7 @@ import com.snoutscout.app.core.ui.*
 import com.snoutscout.app.data.model.MockData
 import com.snoutscout.app.data.model.TrainerProfile
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun TrainerProfileScreen(
     trainerId: String,
@@ -68,9 +70,9 @@ fun TrainerProfileScreen(
                         Spacer(Modifier.height(16.dp))
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                             StatItem("${t.rating}", "Rating")
-                            Divider(modifier = Modifier.height(40.dp).width(1.dp))
+                            VerticalDivider(modifier = Modifier.height(40.dp))
                             StatItem("${t.totalSessions}", "Sessions")
-                            Divider(modifier = Modifier.height(40.dp).width(1.dp))
+                            VerticalDivider(modifier = Modifier.height(40.dp))
                             StatItem("₹${t.ratePerMin}/min", "Rate")
                         }
                         Spacer(Modifier.height(16.dp))

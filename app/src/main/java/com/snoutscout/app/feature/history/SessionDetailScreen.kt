@@ -52,12 +52,12 @@ fun SessionDetailScreen(
                             Text("${s.durationMinutes} min", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                             Text("Duration", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
-                        Divider(modifier = Modifier.height(40.dp).width(1.dp))
+                        VerticalDivider(modifier = Modifier.height(40.dp))
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("₹${s.cost}", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                             Text("Cost", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
-                        Divider(modifier = Modifier.height(40.dp).width(1.dp))
+                        VerticalDivider(modifier = Modifier.height(40.dp))
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(s.type.name, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                             Text("Type", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)

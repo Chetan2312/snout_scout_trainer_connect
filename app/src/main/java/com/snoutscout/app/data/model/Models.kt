@@ -160,5 +160,5 @@ data class AppState(
     val isLoggedIn: Boolean = false,
     val currentRole: UserRole = UserRole.CLIENT,
     val walletBalance: Int = 450,
-    val currentUser: User = MockData.CLIENT_USER
+    val currentUser: User = User("u1", "Aarav Sharma", "+91 98765 43210", "aarav@email.com", "Pune")
 )

@@ -1,6 +1,7 @@
 package com.snoutscout.app.feature.trainer_profile_mgmt
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -11,16 +12,19 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 import com.snoutscout.app.core.theme.SnoutScoutColors
 import com.snoutscout.app.core.ui.*
 import com.snoutscout.app.data.model.MockData
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun TrainerProfileMgmtScreen(onBack: () -> Unit) {
     val trainer = MockData.TRAINERS.first()
     var bio by remember { mutableStateOf(trainer.bio) }
     var rate by remember { mutableStateOf(trainer.ratePerMin.toString()) }
     val snackbar = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
 
     Scaffold(
         topBar = { SSTopBar("My Profile", onBack = onBack) },
@@ -76,11 +80,7 @@ fun TrainerProfileMgmtScreen(onBack: () -> Unit) {
 
             SSButton(
                 text = "Save Changes",
-                onClick = {
-                    kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Main).launch {
-                        snackbar.showSnackbar("Profile updated!")
-                    }
-                },
+                onClick = { scope.launch { snackbar.showSnackbar("Profile updated!") } },
                 modifier = Modifier.fillMaxWidth()
             )
         }

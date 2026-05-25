@@ -1,6 +1,7 @@
 package com.snoutscout.app.feature.trainer_browse
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
@@ -14,6 +15,7 @@ import com.snoutscout.app.core.ui.ButtonVariant
 import com.snoutscout.app.data.model.MockData
 
 @OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun FilterBottomSheet(
     filters: TrainerFilters,
