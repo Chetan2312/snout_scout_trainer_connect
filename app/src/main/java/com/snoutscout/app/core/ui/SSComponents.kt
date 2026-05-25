@@ -250,6 +250,7 @@ fun SSSectionHeader(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SSTopBar(
     title: String,

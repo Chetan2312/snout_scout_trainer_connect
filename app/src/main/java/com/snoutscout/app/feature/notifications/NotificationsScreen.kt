@@ -24,6 +24,7 @@ import com.snoutscout.app.core.util.DateFormatter
 import com.snoutscout.app.data.model.NotificationItem
 import com.snoutscout.app.data.model.NotificationType
 import com.snoutscout.app.data.repository.NotificationRepository
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 

@@ -14,8 +14,7 @@ import com.snoutscout.app.core.ui.SSChip
 import com.snoutscout.app.core.ui.ButtonVariant
 import com.snoutscout.app.data.model.MockData
 
-@OptIn(ExperimentalMaterial3Api::class)
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun FilterBottomSheet(
     filters: TrainerFilters,

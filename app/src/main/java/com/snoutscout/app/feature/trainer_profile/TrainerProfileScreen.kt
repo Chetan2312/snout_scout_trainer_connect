@@ -163,6 +163,7 @@ private fun StatItem(value: String, label: String) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun AboutTab(t: TrainerProfile) {
     Column(Modifier.padding(16.dp)) {
