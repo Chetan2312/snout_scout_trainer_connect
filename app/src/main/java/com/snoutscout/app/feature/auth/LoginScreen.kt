@@ -13,11 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.snoutscout.app.R
 import com.snoutscout.app.core.theme.SnoutScoutColors
 import com.snoutscout.app.core.ui.SSButton
 import com.snoutscout.app.core.ui.SSInput
@@ -38,7 +41,14 @@ fun LoginScreen(onLogin: () -> Unit) {
         Box(
             modifier = Modifier.size(72.dp).clip(CircleShape).background(SnoutScoutColors.Primary.copy(0.12f)),
             contentAlignment = Alignment.Center
-        ) { Text("🐾", fontSize = 36.sp) }
+        ) {
+            androidx.compose.foundation.Image(
+                painter = painterResource(R.drawable.logo),
+                contentDescription = "Snout Scout Logo",
+                modifier = Modifier.size(72.dp).clip(CircleShape),
+                contentScale = ContentScale.Crop
+            )
+        }
         Spacer(Modifier.height(24.dp))
         Text(
             if (showOtp) "Enter OTP" else if (isRegister) "Create account" else "Welcome back",

@@ -3,7 +3,6 @@ package com.snoutscout.app.feature.auth
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -12,9 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.snoutscout.app.R
 import com.snoutscout.app.core.theme.SnoutScoutColors
 import kotlinx.coroutines.delay
 
@@ -44,7 +46,12 @@ fun SplashScreen(onComplete: () -> Unit) {
                     .background(Color.White.copy(alpha = 0.2f)),
                 contentAlignment = Alignment.Center
             ) {
-                Text("🐾", fontSize = 56.sp)
+                androidx.compose.foundation.Image(
+                    painter = painterResource(R.drawable.logo),
+                    contentDescription = "Snout Scout Logo",
+                    modifier = Modifier.size(100.dp).clip(CircleShape),
+                    contentScale = ContentScale.Crop
+                )
             }
             Spacer(Modifier.height(24.dp))
             Text(

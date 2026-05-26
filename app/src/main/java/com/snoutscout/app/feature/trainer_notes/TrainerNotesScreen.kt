@@ -119,6 +119,25 @@ private fun ReportEditView(
             EditableSection("TRAINING INSTRUCTIONS", instructions, isEditing) { instructions = it }
             EditableSection("FOLLOW-UP", followUp, isEditing) { followUp = it }
 
+            var showApproveDialog by remember { mutableStateOf(false) }
+
+            if (showApproveDialog) {
+                AlertDialog(
+                    onDismissRequest = { showApproveDialog = false },
+                    title = { Text("Approve & Send Report") },
+                    text = { Text("This will finalize the report and send it to the client. You won't be able to edit it after approval.") },
+                    confirmButton = {
+                        TextButton(onClick = {
+                            showApproveDialog = false
+                            onApprove(report.copy(status = ReportStatus.APPROVED))
+                        }) { Text("Approve & Send") }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { showApproveDialog = false }) { Text("Cancel") }
+                    }
+                )
+            }
+
             if (isEditing) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     SSButton("Cancel", onClick = { isEditing = false }, modifier = Modifier.weight(1f), variant = ButtonVariant.SECONDARY)
@@ -130,9 +149,7 @@ private fun ReportEditView(
             } else {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     SSButton("Edit", onClick = { isEditing = true }, modifier = Modifier.weight(1f), variant = ButtonVariant.SECONDARY)
-                    SSButton("Approve & Send", onClick = {
-                        onApprove(report.copy(status = ReportStatus.APPROVED))
-                    }, modifier = Modifier.weight(1f))
+                    SSButton("Approve & Send", onClick = { showApproveDialog = true }, modifier = Modifier.weight(1f))
                 }
             }
         }

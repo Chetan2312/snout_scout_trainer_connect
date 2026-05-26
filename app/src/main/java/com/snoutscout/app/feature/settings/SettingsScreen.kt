@@ -8,7 +8,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -28,6 +28,24 @@ fun SettingsScreen(
     onNavigateToReports: () -> Unit,
     onNavigateToNotifications: () -> Unit
 ) {
+    var showSignOutDialog by remember { mutableStateOf(false) }
+
+    if (showSignOutDialog) {
+        AlertDialog(
+            onDismissRequest = { showSignOutDialog = false },
+            title = { Text("Sign Out") },
+            text = { Text("Are you sure you want to sign out?") },
+            confirmButton = {
+                TextButton(onClick = { showSignOutDialog = false; onSignOut() }) {
+                    Text("Sign Out", color = SnoutScoutColors.Error)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showSignOutDialog = false }) { Text("Cancel") }
+            }
+        )
+    }
+
     Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
         // Profile card
         SSCard(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
@@ -89,7 +107,7 @@ fun SettingsScreen(
         Spacer(Modifier.height(8.dp))
 
         ListItem(
-            modifier = Modifier.clickable { onSignOut() },
+            modifier = Modifier.clickable { showSignOutDialog = true },
             leadingContent = { Icon(Icons.Outlined.Logout, null, tint = SnoutScoutColors.Error) },
             headlineContent = { Text("Sign Out", color = SnoutScoutColors.Error) }
         )

@@ -20,9 +20,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.snoutscout.app.R
 import com.snoutscout.app.core.theme.SnoutScoutColors
 import com.snoutscout.app.core.ui.SSButton
 import kotlinx.coroutines.launch
@@ -61,7 +64,16 @@ fun OnboardingScreen(onGetStarted: () -> Unit) {
                         .background(SnoutScoutColors.Primary.copy(alpha = 0.14f)),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(p.emoji, fontSize = 48.sp)
+                    if (page == 0) {
+                        androidx.compose.foundation.Image(
+                            painter = painterResource(R.drawable.logo),
+                            contentDescription = "Snout Scout Logo",
+                            modifier = Modifier.size(100.dp).clip(CircleShape),
+                            contentScale = ContentScale.Crop
+                        )
+                    } else {
+                        Text(p.emoji, fontSize = 48.sp)
+                    }
                 }
                 Spacer(Modifier.height(32.dp))
                 Text(p.title, style = MaterialTheme.typography.headlineMedium, textAlign = TextAlign.Center)
