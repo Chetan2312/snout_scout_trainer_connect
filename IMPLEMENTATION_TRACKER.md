@@ -12,7 +12,7 @@
 **Build:** ✅ assembleDebug passes (as of 2026-05-25, commit `7a918f5`)
 **Lint:** ⚠️ lintDebug has 68 warnings but `continue-on-error: true` — not blocking
 **GitHub Actions:** ✅ APK artifact uploading; Release step may still fail (403 on some repos — see Known Issues)
-**Last commit:** `7a918f5` — fix camera uses-feature tag and workflow permissions
+**Last commit:** `ce50825` — feat: add app logo, sign out dialog, approve dialog
 
 ---
 
@@ -38,11 +38,11 @@
 
 These items from the spec are **not yet implemented**:
 
-- [ ] **App logo on screens** — `assets/logo.jpeg` should appear on Splash, Onboarding, Login, Home. Currently using a paw vector icon instead. Need to copy logo to `res/drawable/` and use `Image(painterResource(...))` instead of the icon.
+- [x] **App logo on screens** — `logo.jpeg` copied to `res/drawable/`. Used on Splash (120dp circle), Login (72dp circle), Onboarding page 1 (100dp circle). Home screen still uses paw emoji in header (low priority).
 - [ ] **Loading/skeleton states** — No shimmer or skeleton while Room data loads. Screens show empty or immediately render mock data.
 - [ ] **Error states with retry** — No error handling UI on any screen. Repositories return results but screens don't display error messages.
-- [ ] **Confirmation dialogs** — No confirmation before: Sign Out, Book Again, Approve & Send report.
-- [ ] **Input validation** — Wallet custom recharge doesn't validate min ₹100 / max ₹5000. Login doesn't validate 10-digit phone.
+- [x] **Confirmation dialogs** — Sign Out (SettingsScreen) and Approve & Send (TrainerNotesScreen) now have AlertDialog confirmations. "Book Again" button in SessionDetailScreen has no action (navigates nowhere) — low priority.
+- [x] **Input validation** — Wallet custom recharge enforces min ₹100 (button disabled below). Login enforces 10-digit phone length. Max ₹5000 NOT enforced — low priority.
 - [ ] **Strings centralized** — Many UI strings are hardcoded in composables rather than in `res/values/strings.xml`.
 - [ ] **Dark mode testing** — Theme has dark colors defined but screens haven't been verified in dark mode.
 - [ ] **@Preview annotations** — Spec says all composables should have `@Preview` functions. None exist currently.
